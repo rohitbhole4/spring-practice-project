@@ -1,0 +1,10 @@
+target/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+.idea/
+out/
+node_modules/
+.DS_Store
