@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div class="header">
+    <div class="title">Product Dashboard</div>
+    <div style="text-align:right"><a th:href="@{/showLogin}" class="login-btn">Login</a></div>
+</div>
+
+
+<!-- SPRING SEARCH FORM -->
+
+<div class="search-box">
+
+    <form th:action="@{/search}" th:object="${product}" method="post">
+
+        <label>Search by Brand</label>
+
+        <input type="text" th:field="*{prodBrand}" placeholder="Apple, Samsung">
+
+        <button type="submit">Search</button>
+    </form>
+
+</div>
+
+
+<div class="table-container">
+
+    <table id="productTable" class="display">
+
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Brand</th>
+            <th>Category</th>
+            <th>Price</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="p : ${prodList}">
+
+            <td th:text="${p.prodName}"></td>
+
+            <td th:text="${p.prodBrand}"></td>
+
+            <td>
+                <span class="badge" th:text="${p.prodCategory}"></span>
+            </td>
+
+            <td class="price">$ <span th:text="${p.prodPrice}"></span></td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+</body>
+</html>

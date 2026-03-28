@@ -38,7 +38,7 @@ public class ProductController {
         this.service = service;
     }
 
-    @RequestMapping("/saveProduct")
+    @RequestMapping("/saveProduct1")
     public String saveProduct(@RequestParam("prodName")String prodName,
                               @RequestParam("prodPrice")double prodPrice,
                               @RequestParam("prodBrand")String prodBrand,
@@ -56,6 +56,19 @@ public class ProductController {
 
         service.addProduct(p);
 
-        return "addProduct";
+        List<Product> pList = service.getAllProducts();
+        model.addAttribute("prodList",pList);
+        return "index";
+    }
+
+    @RequestMapping("/saveProduct")
+    public String saveProduct(Product p ,Model model){
+
+        service.addProduct(p);
+
+        List<Product> pList = service.getAllProducts();
+        model.addAttribute("prodList",pList);
+        return "index";
+
     }
 }
