@@ -31,8 +31,17 @@ public class ProductController {
 
     @RequestMapping("/search")
     public String getByBrand(Model model,String prodBrand){
-        List<Product> pList = service.getByBrand(prodBrand);
-        model.addAttribute("prodList",pList);
+        if (prodBrand.equals("")){
+
+            List<Product> pList = service.getAllProducts();
+            model.addAttribute("prodList",pList);
+
+        }else {
+
+            List<Product> pList = service.getByBrand(prodBrand);
+            model.addAttribute("prodList",pList);
+        }
+
        // model.addAttribute("product",new Product());
         return "index";
     }
@@ -41,6 +50,8 @@ public class ProductController {
     public String addProduct(Product product,Model model){
 
         service.addProduct(product);
+        List<Product> pList = service.getAllProducts();
+        model.addAttribute("prodList",pList);
         model.addAttribute("msg","Product Added.");
         return "admin";
     }

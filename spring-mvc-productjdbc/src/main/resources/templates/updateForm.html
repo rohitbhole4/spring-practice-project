@@ -1,44 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>My Page</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>Update Product : </h1>
 
-<form th:action="@{/updateProduct}" th:object="${product}" method="post">
+<div class="layout">
 
-    Name:
-    <input type="text" th:field="*{prodId}"  contenteditable="false"/>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Admin</h2>
+        <a th:href="@{/admin}">Dashboard</a>
+        <a th:href="@{/addForm}">Add Product</a>
+        <a th:href="@{/editForm}">Update Product</a>
+        <a th:href="@{/deleteForm}">Delete Product</a>
+    </aside>
 
-    <br><br>
+    <!-- Main -->
+    <div class="main">
 
+        <!-- Topbar -->
+        <div class="topbar">
+            <span>Edit Product</span>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
 
-    Name:
-    <input type="text" th:field="*{prodName}" />
+        <!-- Content -->
+        <div class="content">
 
-    <br><br>
+            <div class="card">
 
-    Price:
-    <input type="text" th:field="*{prodPrice}"/>
+                <h2 style="margin-bottom: 16px;">Update Product</h2>
 
-    <br><br>
+                <form th:action="@{/updateProduct}" th:object="${product}" method="post">
 
-    Brand:
-    <input type="text" th:field="*{prodBrand}" />
+                    <label>Product ID</label>
+                    <input type="text" th:field="*{prodId}" readonly />
 
-    <br><br>
+                    <label>Name</label>
+                    <input type="text" th:field="*{prodName}" />
 
-    Category:
-    <input type="text" th:field="*{prodCategory}" />
+                    <label>Price</label>
+                    <input type="number" step="0.01" th:field="*{prodPrice}" />
 
-    <br><br>
+                    <label>Brand</label>
+                    <input type="text" th:field="*{prodBrand}" />
 
-    <button type="submit">Update</button>
+                    <label>Category</label>
+                    <input type="text" th:field="*{prodCategory}" />
 
-</form>
+                    <button type="submit">Update Product</button>
 
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>

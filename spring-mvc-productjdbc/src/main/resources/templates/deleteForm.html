@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head></head>
+<head>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
 <body>
 
-<h1>Delete Product : </h1>
-<form th:action="@{/deleteProduct}"  method="post">
+<div class="layout">
 
-    Enter Product Id : <input type="text"  name="prodId" >
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Admin</h2>
+        <a th:href="@{/admin}">Dashboard</a>
+        <a th:href="@{/addForm}">Add Product</a>
+        <a th:href="@{/editForm}">Update Product</a>
+        <a th:href="@{/deleteForm}">Delete Product</a>
+    </aside>
 
-    <button type="submit">Delete</button>
-</form>
+    <!-- Main -->
+    <div class="main">
 
+        <!-- Topbar -->
+        <div class="topbar">
+            <span>Delete Product</span>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
 
+        <!-- Content -->
+        <div class="content">
+
+            <div class="card">
+
+                <h2 style="margin-bottom: 16px;">Delete Product</h2>
+
+                <form th:action="@{/deleteProduct}" method="post">
+
+                    <label>Enter Product ID</label>
+                    <input type="text" name="prodId">
+
+                    <button class="btn-danger" type="submit">Delete</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>

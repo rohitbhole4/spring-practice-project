@@ -1,56 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head></head>
+<head>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
 <body>
-<div style="text-align:right"><a th:href="@{/logout}">logout</a></div>
-<h1>Admin Panel : </h1>
-<a th:href="@{/addForm}">Add Product</a><br>
-<a th:href="@{/editForm}">Update Product</a><br>
-<a th:href="@{/deleteForm}" >Delete Product</a><br>
-<hr>
-<p th:text="${msg}"></p>
-<hr>
-<br><br>
 
-<div class="table-container">
+<div class="layout">
 
-    <table id="productTable" class="display">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Admin</h2>
+        <a th:href="@{/admin}">Dashboard</a>
+        <a th:href="@{/addForm}">Add Product</a>
+        <a th:href="@{/editForm}">Update Product</a>
+        <a th:href="@{/deleteForm}">Delete Product</a>
+    </aside>
 
-        <thead>
-        <tr>
-            <th>Product Id</th>
-            <th>Product</th>
-            <th>Brand</th>
-            <th>Category</th>
-            <th>Price</th>
+    <!-- Main -->
+    <div class="main">
 
-        </tr>
-        </thead>
+        <!-- Topbar -->
+        <div class="topbar">
+            <span>Dashboard</span>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
 
-        <tbody>
+        <!-- Content -->
+        <div class="content">
 
-        <tr th:each="p : ${prodList}">
+            <div class="card">
 
-            <td th:text="${p.prodId}"></td>
+                <h2 style="margin-bottom: 16px;">Products</h2>
 
-            <td th:text="${p.prodName}"></td>
+                <p th:text="${msg}"></p>
 
-            <td th:text="${p.prodBrand}"></td>
+                <table>
 
-            <td>
-                <span class="badge" th:text="${p.prodCategory}"></span>
-            </td>
+                    <thead>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>Product</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
 
-            <td class="price">$ <span th:text="${p.prodPrice}"></span></td>
+                    <tbody>
 
-        </tr>
+                    <tr th:each="p : ${prodList}">
+                        <td th:text="${p.prodId}"></td>
+                        <td th:text="${p.prodName}"></td>
+                        <td th:text="${p.prodBrand}"></td>
+                        <td>
+                            <span class="badge" th:text="${p.prodCategory}"></span>
+                        </td>
+                        <td>$ <span th:text="${p.prodPrice}"></span></td>
+                    </tr>
 
-        </tbody>
+                    </tbody>
 
-    </table>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
-
 
 </body>
 </html>

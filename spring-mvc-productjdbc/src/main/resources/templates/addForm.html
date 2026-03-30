@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>My Page</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>Add New Product : </h1>
 
-<form th:action="@{/addProduct}" th:object="${product}" method="post">
+<div class="layout">
 
-    Name:
-    <input type="text" th:field="*{prodName}" />
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Admin</h2>
+        <a th:href="@{/admin}">Dashboard</a>
+        <a th:href="@{/addForm}">Add Product</a>
+        <a th:href="@{/editForm}">Update Product</a>
+        <a th:href="@{/deleteForm}">Delete Product</a>
+    </aside>
 
-    <br><br>
+    <!-- Main -->
+    <div class="main">
 
-    Price:
-    <input type="text" th:field="*{prodPrice}" />
+        <!-- Topbar -->
+        <div class="topbar">
+            <span>Add Product</span>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
 
-    <br><br>
+        <!-- Content -->
+        <div class="content">
 
-    Brand:
-    <input type="text" th:field="*{prodBrand}" />
+            <div class="card">
 
-    <br><br>
+                <h2 style="margin-bottom: 16px;">Add New Product</h2>
 
-    Category:
-    <input type="text" th:field="*{prodCategory}" />
+                <form th:action="@{/addProduct}" th:object="${product}" method="post">
 
-    <br><br>
+                    <label>Name</label>
+                    <input type="text" th:field="*{prodName}" />
 
-    <button type="submit">Submit</button>
+                    <label>Price</label>
+                    <input type="number" step="0.01" th:field="*{prodPrice}" />
 
-</form>
+                    <label>Brand</label>
+                    <input type="text" th:field="*{prodBrand}" />
 
+                    <label>Category</label>
+                    <input type="text" th:field="*{prodCategory}" />
+
+                    <button type="submit">Add Product</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>
