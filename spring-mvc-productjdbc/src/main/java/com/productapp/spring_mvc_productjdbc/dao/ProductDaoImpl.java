@@ -23,16 +23,24 @@ public class ProductDaoImpl implements IProductDao{
     }
 
     @Override
-    public void update(int prodId, double price) {
+    public void update(Product product) {
 
-        int a = jdbcTemplate.update(Queries.UPDATEQUERY,price,prodId);
+        System.out.println("at DAO : "+product);
+        int a = jdbcTemplate.update(Queries.UPDATEQUERY,
+                product.getProdName(),
+                product.getProdBrand(),
+                product.getProdCategory(),
+                product.getProdPrice(),
+                product.getProdId());
         System.out.println("no of record updated : ------------------------- : "+a);
 
     }
 
     @Override
     public Product findById(int prodId) {
-        return null;
+        RowMapper<Product> pMapper = new ProductMapper();
+
+        return jdbcTemplate.queryForObject(Queries.PRODUCTBYID,pMapper,prodId);
     }
 
     @Override

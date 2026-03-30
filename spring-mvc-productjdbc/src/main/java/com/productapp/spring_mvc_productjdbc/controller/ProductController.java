@@ -31,10 +31,48 @@ public class ProductController {
 
     @RequestMapping("/search")
     public String getByBrand(Model model,String prodBrand){
-        System.out.println(prodBrand+" 7777777777777777777777");
         List<Product> pList = service.getByBrand(prodBrand);
         model.addAttribute("prodList",pList);
-        model.addAttribute("product",new Product());
+       // model.addAttribute("product",new Product());
         return "index";
     }
+
+    @RequestMapping("/addProduct")
+    public String addProduct(Product product,Model model){
+
+        service.addProduct(product);
+        model.addAttribute("msg","Product Added.");
+        return "admin";
+    }
+
+    @RequestMapping("/getById")
+    public String getById(String prodId, Model model){
+
+        Product product = service.getById(Integer.parseInt(prodId));
+        model.addAttribute("product",product);
+        return "updateForm";
+    }
+
+    @RequestMapping("/updateProduct")
+    public String updateProduct(Product product, Model model){
+
+        service.updateProduct(product);
+        List<Product> pList = service.getAllProducts();
+        model.addAttribute("prodList",pList);
+        model.addAttribute("msg","Product Updated.");
+        return "admin";
+    }
+
+    @RequestMapping("/deleteProduct")
+    public String deleteProduct(String prodId, Model model) {
+
+        service.deleteProduct(Integer.parseInt(prodId));
+        List<Product> pList = service.getAllProducts();
+        model.addAttribute("prodList", pList);
+        model.addAttribute("msg", "Product Deleted.");
+        return "admin";
+    }
+
 }
+
+

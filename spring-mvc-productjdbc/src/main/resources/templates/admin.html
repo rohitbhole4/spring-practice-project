@@ -2,28 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head></head>
 <body>
-
-    <div style="text-align:right"><a th:href="@{/login}">Admin</a></div>
-
-    <h1>Product Catlog : </h1>
-
-
-
-    <!-- SPRING SEARCH FORM -->
-
-<div class="search-box">
-
-    <form th:action="@{/search}"  method="post">
-
-        <label>Search by Brand</label>
-
-        <input type="text" name="prodBrand" placeholder="Apple, Samsung">
-
-        <button type="submit">Search</button>
-    </form>
-
-</div>
-
+<div style="text-align:right"><a th:href="@{/logout}">logout</a></div>
+<h1>Admin Panel : </h1>
+<a th:href="@{/addForm}">Add Product</a><br>
+<a th:href="@{/editForm}">Update Product</a><br>
+<a th:href="@{/deleteForm}" >Delete Product</a><br>
+<hr>
+<p th:text="${msg}"></p>
+<hr>
+<br><br>
 
 <div class="table-container">
 
@@ -63,7 +50,6 @@
     </table>
 
 </div>
-
 
 
 </body>

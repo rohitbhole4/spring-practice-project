@@ -18,13 +18,13 @@ public class ProductServiceImpl implements IProductService{
     }
 
         @Override
-        public void updateProduct(int prodId, double price) {
-        productDao.update(prodId,price);
+        public void updateProduct(Product product) {
+        productDao.update(product);
     }
 
         @Override
         public Product getById(int prodId) {
-        return null;
+        return productDao.findById(prodId);
     }
 
         @Override
