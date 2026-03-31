@@ -24,13 +24,22 @@ public class SpringJpaBookappApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Book book = new Book("struts in action","unknown",12,550,"Tech");
-        service.addBook(book);
+       // Book book = new Book("struts in action","unknown",12,550,"Tech");
+       // service.addBook(book);
 
+
+
+
+        Book nbook = service.getById(10) ;
+        nbook.setTitle("Headfirst java");
+        service.updateBook(nbook);
 
         System.out.println(service.getById(10));
         System.out.println(service.getById(11));
         System.out.println(service.getById(12));
 
+        System.out.println();
+
+        service.getAll().forEach(System.out::println);
  }
 }
