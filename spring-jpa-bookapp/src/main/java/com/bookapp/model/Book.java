@@ -1,13 +1,14 @@
 package com.bookapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
     private String title;
     private String author;
     @Id
+    @GeneratedValue(generator = "book_gen",strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "book_gen",sequenceName = "book_seq",initialValue = 10,allocationSize = 1)
     private Integer bookId;
     private double price;
     private String category;
@@ -16,10 +17,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String author, Integer bookId, double price, String category) {
+    public Book(String title, String author, double price, String category) {
         this.title = title;
         this.author = author;
-        this.bookId = bookId;
+//        this.bookId = bookId;
         this.price = price;
         this.category = category;
     }
