@@ -5,6 +5,9 @@ import com.studentapp.repository.IStudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class StudentServiceImpl implements IStudentService{
 
@@ -22,11 +25,33 @@ public class StudentServiceImpl implements IStudentService{
 
     @Override
     public Student updateStudent(Student stud) {
-        return null;
+        return repo.save(stud);
     }
 
     @Override
     public void deleteStudent(int studId) {
 
+    }
+
+    @Override
+    public Student getById(int studId) {
+
+        Optional<Student> studOpt = repo.findById(studId);
+        return studOpt.orElse(null);
+    }
+
+    @Override
+    public List<Student> findAll() {
+        return repo.findAll();
+    }
+
+    @Override
+    public List<Student> findByDept(String dept) {
+        return repo.findByDept(dept);
+    }
+
+    @Override
+    public List<Student> findByAddressCity(String city) {
+        return repo.findByAddressCity(city);
     }
 }
