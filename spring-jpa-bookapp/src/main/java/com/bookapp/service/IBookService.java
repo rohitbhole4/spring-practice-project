@@ -11,4 +11,11 @@ public interface IBookService {
 
     Book getById(int bookId);
     List<Book> getAll();
+
+    //derived queries
+    List<Book> findByAuthor(String author);
+    List<Book> findByCategory(String category);
+    List<Book> findByPriceLessThan(double price);
+    List<Book> findByCategoryAndPriceLessThan(String category, double price);
+
 }
