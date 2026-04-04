@@ -52,6 +52,7 @@ public class SpringJpaBookappApplication implements CommandLineRunner {
 
 
         // derived
+        System.out.println("derived...");
         System.out.println("find by author");
         service.findByAuthor("unknown").forEach(System.out::println);
         System.out.println();
@@ -69,6 +70,7 @@ public class SpringJpaBookappApplication implements CommandLineRunner {
         System.out.println();
 
         //custom
+        System.out.println("custom...");
         System.out.println("find by auth : ");
         service.findByAuth("robin").forEach(System.out::println);;
         System.out.println();
@@ -79,5 +81,13 @@ public class SpringJpaBookappApplication implements CommandLineRunner {
         service.findByStartingTitle("s").forEach(System.out::println);
         System.out.println();
 
+        //native
+        System.out.println("native...");
+        System.out.println("find by auth : ");
+        service.findByAuthAndPrice("headfirst",2000).forEach(System.out::println);;
+        System.out.println();
+
+        service.findByCatAndStartingTitle("life","i").forEach(System.out::println);;
+        System.out.println();
  }
 }

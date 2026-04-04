@@ -23,4 +23,8 @@ public interface IBookService {
     List<Book> findByCatAndPrice(String category, double price);
     List<Book> findByStartingTitle(String title);
 
+    //native
+    List<Book> findByAuthAndPrice(String author, double price);
+    List<Book> findByCatAndStartingTitle(String cat,String choice);
+
 }

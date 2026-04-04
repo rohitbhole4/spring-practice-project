@@ -80,4 +80,15 @@ public class BookServiceImpl implements IBookService{
     public List<Book> findByStartingTitle(String title) {
         return repo.findByStartingTitle(title);
     }
+
+    //native
+    @Override
+    public List<Book> findByAuthAndPrice(String author, double price) {
+        return repo.findByAuthAndPrice(author,price);
+    }
+
+    @Override
+    public List<Book> findByCatAndStartingTitle(String cat, String choice) {
+        return repo.findByCatAndStartingTitle(cat, choice);
+    }
 }

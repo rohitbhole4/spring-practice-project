@@ -23,4 +23,10 @@ public interface IBookRepository extends JpaRepository<Book,Integer> {
     List<Book> findByCatAndPrice(String category, double price);
     @Query("from Book b where b.title like ?1%")
     List<Book> findByStartingTitle(String title);
+
+    //native
+    @Query(value = "select * from book b where b.author=?1 and b.price<?2", nativeQuery = true)
+    List<Book> findByAuthAndPrice(String author, double price);
+    @Query(value = "select * from book b where b.category=?1 and b.title like ?2%", nativeQuery = true)
+    List<Book> findByCatAndStartingTitle(String cat,String choice);
 }
