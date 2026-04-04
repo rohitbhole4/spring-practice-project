@@ -64,4 +64,20 @@ public class BookServiceImpl implements IBookService{
     public List<Book> findByCategoryAndPriceLessThan(String category, double price) {
         return repo.findByCategoryAndPriceLessThan(category,price);
     }
+
+    //custom
+    @Override
+    public List<Book> findByAuth(String author) {
+        return repo.findByAuth(author);
+    }
+
+    @Override
+    public List<Book> findByCatAndPrice(String category, double price) {
+        return repo.findByCatAndPrice(category,price);
+    }
+
+    @Override
+    public List<Book> findByStartingTitle(String title) {
+        return repo.findByStartingTitle(title);
+    }
 }

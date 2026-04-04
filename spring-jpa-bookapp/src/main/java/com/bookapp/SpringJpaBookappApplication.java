@@ -68,5 +68,16 @@ public class SpringJpaBookappApplication implements CommandLineRunner {
         service.findByCategoryAndPriceLessThan("life",600);
         System.out.println();
 
+        //custom
+        System.out.println("find by auth : ");
+        service.findByAuth("robin").forEach(System.out::println);;
+        System.out.println();
+        System.out.println("find by cat and price : ");
+        service.findByCatAndPrice("tech",550).forEach(System.out::println);;
+        System.out.println();
+        System.out.println("find by starting title : ");
+        service.findByStartingTitle("s").forEach(System.out::println);
+        System.out.println();
+
  }
 }

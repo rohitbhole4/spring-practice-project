@@ -18,4 +18,9 @@ public interface IBookService {
     List<Book> findByPriceLessThan(double price);
     List<Book> findByCategoryAndPriceLessThan(String category, double price);
 
+    //custom
+    List<Book> findByAuth(String author);
+    List<Book> findByCatAndPrice(String category, double price);
+    List<Book> findByStartingTitle(String title);
+
 }
